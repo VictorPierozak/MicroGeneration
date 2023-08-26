@@ -1,0 +1,22 @@
+function fitvalue = fitnessPenalty(genVec, scale, num, finalBlack, finalWhite, finalGrey, finalSize, p)
+
+genImage = uint8(makeMatrix3D_v2(genVec,scale,num));
+
+[avgSize, devSize] = AverageGrainSize(genImage);
+propSize = abs(finalSize - avgSize)/finalSize;
+normDevSize = devSize/finalSize;
+
+greyFrac = abs(finalGrey - nnz(genVec == 127)/(num^3))/finalGrey;
+whiteFrac = abs(finalWhite - nnz(genVec == 255)/(num^3))/finalWhite;
+
+%if num > 8
+%coorNum = ( 6 - AvgCoordinateNum(genVec, num) )/6;
+%else
+%coorNum = 0;
+%end
+
+%tau 
+fitvalue = (4^p)*(propSize^p) + normDevSize^p + (greyFrac+whiteFrac)^p;
+
+end
+

@@ -1,0 +1,9 @@
+function mutationChildren = mutate(parents, options, nvars,... 
+FitnessFcn, state, thisScore, thisPopulation, collorNum)
+
+toMutate = thisPopulation(parents,:);
+[chNum, len] = size(toMutate);
+mutated = fix
+
+end
+
