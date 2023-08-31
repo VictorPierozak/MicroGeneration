@@ -35,6 +35,6 @@ belongToBoundry = zeros(1, voxelNumber);
         end
         belongToBoundry(voxelNumber) = flag;
     end
-    boundries = microstructureVector(belongToBoundry == 1);
+    boundries = find(belongToBoundry);
 end
 

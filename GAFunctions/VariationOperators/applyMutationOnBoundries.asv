@@ -1,0 +1,27 @@
+function [outputArg1,outputArg2] = applyMutationOnBoundries(boundryPosition, microstructureVec)
+positionToMutate = size(boundryPosition,2);
+extendedPhaseVector = repmat([0, 127, 255], 1,3,1);
+for i = 1:positionToMutate
+   if microstructureVec(boundryPosition(i)) == 0
+      if rand() < 0.5
+          microstructureVec(boundryPosition(i)) = 127;
+      else
+          microstructureVec(boundryPosition(i)) = 255;
+      end
+   elseif microstructureVec(boundryPosition(i)) == 127
+      if rand() < 0.5
+          microstructureVec(boundryPosition(i)) = 0;
+      else
+          microstructureVec(boundryPosition(i)) = 255;
+      end
+   else
+       if rand() < 0.5
+          microstructureVec(boundryPosition(i)) = 0;
+       else
+          microstructureVec(boundryPosition(i)) = 127;
+       end
+   end
+
+end
+end
+
