@@ -1,4 +1,4 @@
-function boundries = selectPhaseBoundries(microstructureVector)
+function boundries = selectPhaseBoundries(microstructureVector, num)
 [~, voxelNumber] = size(microstructureVector);
 belongToBoundry = zeros(1, voxelNumber);
     for voxel = 1:voxelNumber
@@ -18,7 +18,7 @@ belongToBoundry = zeros(1, voxelNumber);
                  flag = 1;
              end
         end
-        if  mod(voxel, num^2) < num^2-num
+        if  mod(voxel, num^2) < num^2-num && mod(voxel, num^2) ~= 0
              if microstructureVector(1, voxel+num) ~= microstructureVector(1, voxel)
                  flag = 1;
              end
